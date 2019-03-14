@@ -8,8 +8,9 @@ import {
   TouchableHighlight,
   Keyboard
 } from "react-native";
-import MapView from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import apiKey from "./api";
+import MapStyle from "./mapstyle";
 
 export default class App extends Component {
   constructor(props) {
@@ -77,6 +78,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <MapView
+          provider={PROVIDER_GOOGLE}
+          customMapStyle={MapStyle}
           style={styles.map}
           region={{
             latitude: 37.78825,

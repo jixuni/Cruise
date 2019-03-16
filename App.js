@@ -70,7 +70,6 @@ export default class App extends Component {
   //calls google api for destination, right now it will query the google api for your input e.g McDonalds and it willr return all mcdonalds within 2000 meters of your current gps location
   // This can be to later use to grab user input and fetch database in future, the google api just for testing
   async onChangeDestination(destination) {
-    this.setState({ destination });
     const apiUrl = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${apiKey}&input=${destination}&location=${
       this.state.latitude
     },${this.state.longitude}&radius=2000`;
@@ -142,9 +141,12 @@ export default class App extends Component {
           placeholder="Enter destination ..."
           style={styles.destinationInput}
           value={this.state.destination}
-          onChangeText={destination =>
-            this.onChangeDestinationDebounce(destination)
-          }
+          onChangeText={destination => {
+            // return (
+            this.setState({ destination });
+            this.onChangeDestinationDebounce(destination);
+            // );
+          }}
         />
         {locationPredictions}
         {/* <Button title="Testing" onPress={this.routeLocation(this.state.x)} /> */}

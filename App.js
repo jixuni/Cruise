@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { TextInput, StyleSheet, Text, View } from "react-native";
+import {
+  TextInput,
+  StyleSheet,
+  Text,
+  View,
+  Keyboard,
+  TouchableHighlight
+} from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline } from "react-native-maps";
 import apiKey from "./api";
 import MapStyle from "./mapstyle";
@@ -79,12 +86,27 @@ export default class App extends Component {
     }
   }
 
+  pressedPrediction(prediction) {
+    console.log(prediction);
+    Keyboard.dismiss();
+    this.setState({
+      locationPredictions: [],
+      destination: prediction.description
+    });
+    Keyboard;
+  }
+
   render() {
     const locationPredictions = this.state.locationPredictions.map(
       prediction => (
-        <Text style={styles.locationSuggestion} key={prediction.id}>
-          {prediction.description}
-        </Text>
+        <TouchableHighlight
+          key={prediction.id}
+          onPress={() => this.pressedPrediction(prediction)}
+        >
+          <Text style={styles.locationSuggestion}>
+            {prediction.description}
+          </Text>
+        </TouchableHighlight>
       )
     );
     return (

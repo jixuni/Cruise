@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Button } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import Driver from "./screens/Driver";
 import Passenger from "./screens/Passenger";
 
@@ -12,14 +12,17 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {}
+
   render() {
-    //set the state to passer or driver and render that component
     if (this.state.isDriver) {
       return <Driver />;
     }
+
     if (this.state.isPassenger) {
       return <Passenger />;
     }
+
     return (
       <View style={styles.container}>
         <Button

@@ -12,6 +12,8 @@ export default class Driver extends Component {
     this.state = {
       latitude: 0,
       longitude: 0,
+      destination: "",
+      predictions: [],
       pointCoords: [],
       lookingForPassengers: false
     };
@@ -65,12 +67,12 @@ export default class Driver extends Component {
     if (!this.state.lookingForPassengers) {
       this.setState({ lookingForPassengers: true });
 
-      // console.log(this.state.lookingForPassengers);
+      console.log(this.state.lookingForPassengers);
 
       this.socket = socketIO.connect("http://192.168.1.205:3000");
 
       this.socket.on("connect", () => {
-        this.socket.emit("lookingForPassenger");
+        this.socket.emit("passengerRequest");
       });
 
       this.socket.on("taxiRequest", routeResponse => {
@@ -84,9 +86,8 @@ export default class Driver extends Component {
       });
     }
   }
-
   acceptPassengerRequest() {
-    //pass driver location to passenger
+    //Pass on drivers location
     this.socket.emit("driverLocation", {
       latitude: this.state.latitude,
       longitude: this.state.longitude

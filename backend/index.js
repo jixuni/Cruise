@@ -8,19 +8,21 @@ let taxiSocket = null;
 let passengerSocket = null;
 
 io.on("connection", socket => {
-  console.log("a user connected !");
+  console.log("a user connected :D");
   socket.on("taxiRequest", taxiRoute => {
     passengerSocket = socket;
-    console.log("someone is looking for a taxi");
-    if (taxiSocket != null) {
+    console.log("Someone wants a taxi!");
+    if (taxiSocket !== null) {
       taxiSocket.emit("taxiRequest", taxiRoute);
     }
   });
+
   socket.on("driverLocation", driverLocation => {
     passengerSocket.emit("driverLocation", driverLocation);
   });
-  socket.on("lookingForPassenger", () => {
-    console.log("Someone is looking for a passenger");
+
+  socket.on("passengerRequest", () => {
+    console.log("Someone wants a passenger!");
     taxiSocket = socket;
   });
 });

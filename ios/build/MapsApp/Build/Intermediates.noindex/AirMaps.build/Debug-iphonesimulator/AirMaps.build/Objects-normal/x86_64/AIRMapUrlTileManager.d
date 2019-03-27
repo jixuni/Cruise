@@ -1,0 +1,35 @@
+dependencies: \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/AIRMapUrlTileManager.m \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTConvert+CoreLocation.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/AIRMapMarker.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/AIRMapCallout.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/ios/build/MapsApp/Build/Products/Debug-iphonesimulator/include/React/RCTView.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/AIRMap.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/Callout/SMCalloutView.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/RCTConvert+AirMap.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/AIRMapUrlTile.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/AIRMapCoordinate.h \
+  /Users/jixuni/Documents/Projects/ReactNativeMap/node_modules/react-native-maps/lib/ios/AirMaps/AIRMapUrlTileManager.h

@@ -5,6 +5,7 @@
 import { AppRegistry } from "react-native";
 import App from "./App";
 import { name as appName } from "./app.json";
+import Login from "./screens/Login";
 
 console.ignoredYellowBox = ["Remote debugger"];
 import { YellowBox } from "react-native";

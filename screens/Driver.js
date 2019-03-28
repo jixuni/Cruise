@@ -1,20 +1,22 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Image, ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  ActivityIndicator,
+  Linking,
+  Platform,
+  Alert
+} from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import BottomButton from "../components/BottomButton";
-import apiKey from "../google_api_key";
-import PolyLine from "@mapbox/polyline";
 import socketIO from "socket.io-client";
+import BackgroundGeolocation from "react-native-mauron85-background-geolocation";
 
 export default class Driver extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      latitude: 0,
-      longitude: 0,
-      destination: "",
-      predictions: [],
-      pointCoords: [],
       lookingForPassengers: false
     };
     this.acceptPassengerRequest = this.acceptPassengerRequest.bind(this);
@@ -23,44 +25,47 @@ export default class Driver extends Component {
   }
 
   componentDidMount() {
-    //Get current location and set initial region to this
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        });
-      },
-      error => console.error(error),
-      { enableHighAccuracy: true, maximumAge: 2000, timeout: 20000 }
-    );
-  }
+    BackgroundGeolocation.configure({
+      desiredAccuracy: BackgroundGeolocation.HIGH_ACCURACY,
+      stationaryRadius: 50,
+      distanceFilter: 50,
+      debug: false,
+      startOnBoot: false,
+      stopOnTerminate: true,
+      locationProvider: BackgroundGeolocation.ACTIVITY_PROVIDER,
+      interval: 10000,
+      fastestInterval: 5000,
+      activitiesInterval: 10000,
+      stopOnStillActivity: false
+    });
 
-  async getRouteDirections(destinationPlaceId) {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${
-          this.state.latitude
-        },${
-          this.state.longitude
-        }&destination=place_id:${destinationPlaceId}&key=${apiKey}`
+    BackgroundGeolocation.on("authorization", status => {
+      console.log(
+        "[INFO] BackgroundGeolocation authorization status: " + status
       );
-      const json = await response.json();
-      console.log(json);
-      const points = PolyLine.decode(json.routes[0].overview_polyline.points);
-      const pointCoords = points.map(point => {
-        return { latitude: point[0], longitude: point[1] };
-      });
-      this.setState({
-        pointCoords,
-        routeResponse: json
-      });
-      this.map.fitToCoordinates(pointCoords, {
-        edgePadding: { top: 20, bottom: 20, left: 20, right: 20 }
-      });
-    } catch (error) {
-      console.error(error);
-    }
+      if (status !== BackgroundGeolocation.AUTHORIZED) {
+        // we need to set delay or otherwise alert may not be shown
+        setTimeout(
+          () =>
+            Alert.alert(
+              "App requires location tracking permission",
+              "Would you like to open app settings?",
+              [
+                {
+                  text: "Yes",
+                  onPress: () => BackgroundGeolocation.showAppSettings()
+                },
+                {
+                  text: "No",
+                  onPress: () => console.log("No Pressed"),
+                  style: "cancel"
+                }
+              ]
+            ),
+          1000
+        );
+      }
+    });
   }
 
   findPassengers() {
@@ -75,23 +80,56 @@ export default class Driver extends Component {
         this.socket.emit("passengerRequest");
       });
 
-      this.socket.on("taxiRequest", routeResponse => {
+      this.socket.on("taxiRequest", async routeResponse => {
         console.log(routeResponse);
         this.setState({
           lookingForPassengers: false,
           passengerFound: true,
           routeResponse
         });
-        this.getRouteDirections(routeResponse.geocoded_waypoints[0].place_id);
+        await this.props.getRouteDirections(
+          routeResponse.geocoded_waypoints[0].place_id
+        );
+        this.map.fitToCoordinates(this.props.pointCoords, {
+          edgePadding: { top: 140, bottom: 140, left: 20, right: 20 }
+        });
       });
     }
   }
+
   acceptPassengerRequest() {
-    //Pass on drivers location
-    this.socket.emit("driverLocation", {
-      latitude: this.state.latitude,
-      longitude: this.state.longitude
+    const passengerLocation = this.props.pointCoords[
+      this.props.pointCoords.length - 1
+    ];
+
+    BackgroundGeolocation.on("location", location => {
+      //Send driver location to passenger
+      this.socket.emit("driverLocation", {
+        latitude: location.latitude,
+        longitude: location.longitude
+      });
     });
+
+    BackgroundGeolocation.checkStatus(status => {
+      // you don't need to check status before start (this is just the example)
+      if (!status.isRunning) {
+        BackgroundGeolocation.start(); //triggers start on start event
+      }
+    });
+
+    if (Platform.OS === "ios") {
+      Linking.openURL(
+        `http://maps.apple.com/?daddr=${passengerLocation.latitude},${
+          passengerLocation.longitude
+        }`
+      );
+    } else {
+      Linking.openURL(
+        `geo:0,0?q=${passengerLocation.latitude},${
+          passengerLocation.longitude
+        }(Passenger)`
+      );
+    }
   }
 
   render() {
@@ -100,6 +138,8 @@ export default class Driver extends Component {
     let findingPassengerActIndicator = null;
     let passengerSearchText = "FIND PASSENGERS 👥";
     let bottomButtonFunction = this.findPassengers;
+
+    if (!this.props.latitude) return null;
 
     if (this.state.lookingForPassengers) {
       passengerSearchText = "FINDING PASSENGERS...";
@@ -116,10 +156,10 @@ export default class Driver extends Component {
       bottomButtonFunction = this.acceptPassengerRequest;
     }
 
-    if (this.state.pointCoords.length > 1) {
+    if (this.props.pointCoords.length > 1) {
       endMarker = (
         <Marker
-          coordinate={this.state.pointCoords[this.state.pointCoords.length - 1]}
+          coordinate={this.props.pointCoords[this.props.pointCoords.length - 1]}
         >
           <Image
             style={{ width: 40, height: 40 }}
@@ -137,15 +177,15 @@ export default class Driver extends Component {
           }}
           style={styles.map}
           region={{
-            latitude: this.state.latitude,
-            longitude: this.state.longitude,
+            latitude: this.props.latitude,
+            longitude: this.props.longitude,
             latitudeDelta: 0.015,
             longitudeDelta: 0.0121
           }}
           showsUserLocation={true}
         >
           <Polyline
-            coordinates={this.state.pointCoords}
+            coordinates={this.props.pointCoords}
             strokeWidth={4}
             strokeColor="red"
           />

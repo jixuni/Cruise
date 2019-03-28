@@ -8,11 +8,12 @@ import {
   Image,
   ActivityIndicator
 } from "react-native";
-import MapView, { Polyline, Marker } from "react-native-maps";
+import MapView, { Polyline, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import apiKey from "../google_api_key";
 import _ from "lodash";
 import socketIO from "socket.io-client";
 import BottomButton from "../components/BottomButton";
+import MapStyle from "../mapstyle";
 
 export default class Passenger extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ export default class Passenger extends Component {
 
   async requestDriver() {
     this.setState({ lookingForDriver: true });
-    var socket = socketIO.connect("http://192.168.1.205:3000");
+    var socket = socketIO.connect("http://192.168.3.129:3000");
 
     socket.on("connect", () => {
       console.log("client connected");
@@ -138,6 +139,8 @@ export default class Passenger extends Component {
     return (
       <View style={styles.container}>
         <MapView
+          provider={PROVIDER_GOOGLE}
+          customMapStyle={MapStyle}
           ref={map => {
             this.map = map;
           }}

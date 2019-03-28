@@ -8,11 +8,11 @@ import {
   Platform,
   Alert
 } from "react-native";
-import MapView, { Polyline, Marker } from "react-native-maps";
+import MapView, { Polyline, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import BottomButton from "../components/BottomButton";
 import socketIO from "socket.io-client";
 import BackgroundGeolocation from "react-native-mauron85-background-geolocation";
-
+import MapStyle from "../mapstyle";
 export default class Driver extends Component {
   constructor(props) {
     super(props);
@@ -74,7 +74,7 @@ export default class Driver extends Component {
 
       console.log(this.state.lookingForPassengers);
 
-      this.socket = socketIO.connect("http://192.168.1.205:3000");
+      this.socket = socketIO.connect("http://192.168.3.129:3000");
 
       this.socket.on("connect", () => {
         this.socket.emit("passengerRequest");
@@ -172,6 +172,8 @@ export default class Driver extends Component {
     return (
       <View style={styles.container}>
         <MapView
+          // provider={PROVIDER_GOOGLE}
+          // customMapStyle={MapStyle}
           ref={map => {
             this.map = map;
           }}

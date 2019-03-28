@@ -57,3 +57,8 @@ buck-out/
 
 # Cocoapods
 Pods/
+
+#api
+google_api_key.js
+express-backend/config/jwtSecret.js
+express-backend/config/mongodb.js

@@ -49,7 +49,7 @@ export default class Passenger extends Component {
 
   async requestDriver() {
     this.setState({ lookingForDriver: true });
-    var socket = socketIO.connect("http://192.168.3.129:3000");
+    var socket = socketIO.connect("http://localhost:3000");
 
     socket.on("connect", () => {
       console.log("client connected");

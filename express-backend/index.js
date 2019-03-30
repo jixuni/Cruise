@@ -6,8 +6,9 @@ const authRouter = require("./routes/auth");
 const userRouter = require("./routes/users");
 const authMiddleware = require("./middleware/auth");
 const errorMiddleware = require("./middleware/error");
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
+require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -18,7 +19,7 @@ app.use("/users", userRouter);
 app.use(errorMiddleware);
 
 mongoose
-  .connect(mongoDbConnectionString, { useNewUrlParser: true })
+  .connect(process.env.MONGO_DB, { useNewUrlParser: true })
   .then(result => {
     console.log("Connected to Mongodb");
     app.listen(PORT, () => {

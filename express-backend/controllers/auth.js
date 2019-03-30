@@ -2,7 +2,7 @@ const User = require("../model/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const jwtSecret = require("../config/jwtSecret");
-
+require("dotenv").config();
 exports.loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -11,7 +11,7 @@ exports.loginUser = async (req, res, next) => {
     if (user) {
       const isPasswordCorrect = await bcrypt.compare(password, user.password);
       if (isPasswordCorrect) {
-        const token = jwt.sign({ email: user.email }, jwtSecret);
+        const token = jwt.sign({ email: user.email }, process.env.JWT);
         return res.json({ token });
       }
       const error = new Error(`Password does not match email ${email}`);

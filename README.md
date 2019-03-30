@@ -63,7 +63,7 @@ The database is currently hosted through MongoDB Atlas. Still working on hosting
 - [express-js](https://expressjs.com/) backend server
 - [Mongoosejs](https://mongoosejs.com/) database model for MongoDb
 - Jsonwebtoken for authentication
-- bcrypt hasing password
+- bcrypt for hashing password
 
 ## Acknowledgments
 

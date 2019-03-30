@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io").listen(server);
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 let taxiSocket = null;
 let passengerSocket = null;

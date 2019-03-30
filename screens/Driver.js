@@ -74,7 +74,7 @@ export default class Driver extends Component {
 
       console.log(this.state.lookingForPassengers);
 
-      this.socket = socketIO.connect("http://192.168.3.129:3000");
+      this.socket = socketIO.connect("http://localhost:3000");
 
       this.socket.on("connect", () => {
         this.socket.emit("passengerRequest");
@@ -116,6 +116,8 @@ export default class Driver extends Component {
         BackgroundGeolocation.start(); //triggers start on start event
       }
     });
+
+    // will pass user location to the native maps, rather its apple maps on ios or google maos on android
 
     if (Platform.OS === "ios") {
       Linking.openURL(

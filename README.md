@@ -50,7 +50,7 @@ There is performance issue running the ios sim with a newer iPhone simulation mo
 
 ## Deployment
 
-The database is currently hosted through MongoDB Atlas. Still working on hosting the sockets and Rest api on heroku
+The database is currently hosted through MongoDB Atlas. The express-server and socket.io are both hosted on heroku.
 
 ## Built With
 
@@ -64,6 +64,10 @@ The database is currently hosted through MongoDB Atlas. Still working on hosting
 - [Mongoosejs](https://mongoosejs.com/) database model for MongoDb
 - Jsonwebtoken for authentication
 - bcrypt for hashing password
+
+## ScreenShot
+
+![Alt Text](https://imgur.com/P7ZeFer)
 
 ## Acknowledgments
 

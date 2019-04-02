@@ -74,7 +74,9 @@ export default class Driver extends Component {
 
       console.log(this.state.lookingForPassengers);
 
-      this.socket = socketIO.connect("http://localhost:3000");
+      this.socket = socketIO.connect(
+        "https://boiling-taiga-93720.herokuapp.com/"
+      );
 
       this.socket.on("connect", () => {
         this.socket.emit("passengerRequest");

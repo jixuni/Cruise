@@ -67,7 +67,7 @@ The database is currently hosted through MongoDB Atlas. The express-server and s
 
 ## ScreenShot
 
-![Alt Text](https://imgur.com/P7ZeFer)
+![ScreenShot](https://github.com/jixuni/Cruise/blob/master/images/ScreenShot.png)
 
 ## Acknowledgments
 

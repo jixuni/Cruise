@@ -34,7 +34,7 @@ export default class Passenger extends Component {
     &input=${destination}&location=${this.props.latitude},${
       this.props.longitude
     }&radius=2000`;
-    console.log(apiUrl);
+
     try {
       const result = await fetch(apiUrl);
       const json = await result.json();
@@ -65,7 +65,10 @@ export default class Passenger extends Component {
       this.setState({
         lookingForDriver: false,
         driverIsOnTheWay: true,
-        driverLocation
+        driverLocation,
+        function() {
+          console.log(this.state.lookingForDriver, this.state.driverIsOnTheWay);
+        }
       });
     });
   }

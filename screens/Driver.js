@@ -44,7 +44,7 @@ export default class Driver extends Component {
         "[INFO] BackgroundGeolocation authorization status: " + status
       );
       if (status !== BackgroundGeolocation.AUTHORIZED) {
-        // we need to set delay or otherwise alert may not be shown
+        // need to set delay or otherwise alert may not be shown
         setTimeout(
           () =>
             Alert.alert(
@@ -113,7 +113,7 @@ export default class Driver extends Component {
     });
 
     BackgroundGeolocation.checkStatus(status => {
-      // you don't need to check status before start (this is just the example)
+      // you don't need to check status before start
       if (!status.isRunning) {
         BackgroundGeolocation.start(); //triggers start on start event
       }

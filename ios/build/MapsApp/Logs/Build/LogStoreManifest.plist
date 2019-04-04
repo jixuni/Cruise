@@ -6,7 +6,7 @@
 	<integer>9</integer>
 	<key>logs</key>
 	<dict>
-		<key>5A8051D5-E15E-4ED3-B5A7-6D7B105E27F2</key>
+		<key>4AE9462F-E5F2-45CD-B467-265290E0225E</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>5A8051D5-E15E-4ED3-B5A7-6D7B105E27F2.xcactivitylog</string>
+			<string>4AE9462F-E5F2-45CD-B467-265290E0225E.xcactivitylog</string>
 			<key>highLevelStatus</key>
 			<string>W</string>
 			<key>schemeIdentifier-containerName</key>
@@ -27,13 +27,13 @@
 			<key>signature</key>
 			<string>Building workspace MapsApp with scheme MapsApp and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>575915259.91322303</real>
+			<real>576093334.08561599</real>
 			<key>timeStoppedRecording</key>
-			<real>575915265.14480603</real>
+			<real>576093339.12842095</real>
 			<key>title</key>
 			<string>Building workspace MapsApp with scheme MapsApp and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>5A8051D5-E15E-4ED3-B5A7-6D7B105E27F2</string>
+			<string>4AE9462F-E5F2-45CD-B467-265290E0225E</string>
 		</dict>
 	</dict>
 </dict>

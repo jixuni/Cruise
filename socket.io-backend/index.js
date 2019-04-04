@@ -8,7 +8,7 @@ let taxiSocket = null;
 let passengerSocket = null;
 
 io.on("connection", socket => {
-  console.log("a user connected :D");
+  console.log("a user connected");
   socket.on("taxiRequest", taxiRoute => {
     passengerSocket = socket;
     console.log("Someone wants a taxi!");

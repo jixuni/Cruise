@@ -1,6 +1,6 @@
 # Cruise
 
-Cruise is an mobile riding sharing app build with Read Native. It allows the driver to look for passengers in
+Cruise is an mobile ride sharing app build with Read Native. It allows the driver to look for passengers in
 real time.
 
 ## Getting Started

@@ -69,6 +69,3 @@ The database is currently hosted through MongoDB Atlas. The express-server and s
 
 ![ScreenShot](https://github.com/jixuni/Cruise/blob/master/images/ScreenShot.png)
 
-## Acknowledgments
-
-[Lance Pu](https://github.com/lancepu) (Help set up backend end framework)

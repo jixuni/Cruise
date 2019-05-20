@@ -1,5 +1,7 @@
 # Cruise
 
+![ScreenShot](https://github.com/jixuni/Cruise/blob/master/images/ScreenShot.png)
+
 Cruise is an mobile ride sharing app build with Read Native. It allows the driver to look for passengers in
 real time or passengers to request a ride.
 
@@ -65,7 +67,6 @@ The database is currently hosted through MongoDB Atlas. The express-server and s
 - Jsonwebtoken for authentication
 - bcrypt for hashing password
 
-## ScreenShot
 
-![ScreenShot](https://github.com/jixuni/Cruise/blob/master/images/ScreenShot.png)
+
 

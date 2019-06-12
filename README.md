@@ -2,8 +2,12 @@
 
 ![ScreenShot](https://github.com/jixuni/Cruise/blob/master/images/ScreenShot.png)
 
+[Demo video of app](https://www.youtube.com/watch?v=BGp6jQ3oZWw&feature=youtu.be)
+
 Cruise is an mobile ride sharing app build with Read Native. It allows the driver to look for passengers in
 real time or passengers to request a ride.
+
+
 
 ## Getting Started
 

@@ -20,7 +20,7 @@ Xcode is require for ios testing
 
 Cocoapods installing and managing the depencies for swift/Objective-C apps
 
-node server back-ned
+node server back-end
 
 mongo-db database
 ```

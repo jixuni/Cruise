@@ -40,7 +40,7 @@ cd socket.io-backend npm install or yarn install
 ```
 
 ```
-The api files in .gitnore at home directory needs to be create (mongodb, jwt, googleapi)
+The api files in .gitignore at home directory needs to be create (mongodb, jwt, googleapi)
 ```
 
 ## Running the tests

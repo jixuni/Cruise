@@ -11,7 +11,7 @@
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "react": "16.8.3",
-    "react-native": "0.59.0",
+    "react-native": "0.62.3",
     "react-native-maps": "^0.23.0",
     "react-native-mauron85-background-geolocation": "^0.5.1",
     "socket.io-client": "^2.2.0"
